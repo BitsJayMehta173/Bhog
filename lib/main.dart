@@ -3,7 +3,10 @@ import 'package:khau/components/circle_images.dart';
 import 'package:khau/components/carousel_slider_widget.dart';
 import 'package:khau/components/special_card.dart';
 import 'package:khau/components/full_width_card.dart';
-import 'package:khau/pages/fav.dart'; // Import the FullWidthCard component
+import 'package:khau/pages/fav.dart';
+import 'package:khau/pages/orders.dart';
+import 'package:khau/pages/search.dart';
+import 'package:khau/pages/user.dart'; // Import the Orders component
 
 void main() {
   runApp(const MainApp());
@@ -53,13 +56,19 @@ class _MainScreenState extends State<MainScreen> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              // Add functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchPage()),
+              );
             },
           ),
           IconButton(
             icon: const Icon(Icons.account_box),
             onPressed: () {
-              // Add functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AccountPage()),
+              );
             },
           ),
         ],
@@ -111,7 +120,7 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(height: 20),
                 FullWidthCard(
                   height: 200,
-                  title: 'Full Width Special Item', // Pass title to FullWidthCard
+                  title: 'Full Width Special Item',
                 ),
                 const SizedBox(height: 60), // Space for future content
               ] else if (_selectedIndex == 1) ...[
@@ -121,16 +130,30 @@ class _MainScreenState extends State<MainScreen> {
                 const CircleImages(),
                 FavoritesScreen(),
                 FavoritesScreen(),
-
-                // const SizedBox(height: 20),
               ] else if (_selectedIndex == 2) ...[
-                const Center(child: Text('Orders')),
+                Orders(),
+                Orders(),
+                Orders(),
+                Orders(),
                 const SizedBox(height: 20),
               ],
             ],
           ),
         ),
       ),
+      floatingActionButton: _selectedIndex ==
+              2 // Check if Orders tab is selected
+          ? FloatingActionButton(
+              onPressed: () {
+                // Define what happens when the button is pressed
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Add Order Button Pressed')),
+                );
+              },
+              child: const Icon(Icons.add), // The icon displayed on the button
+              tooltip: 'Add Order', // Tooltip for accessibility
+            )
+          : null, // No FAB for other tabs
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -148,7 +171,7 @@ class _MainScreenState extends State<MainScreen> {
         ],
         currentIndex: _selectedIndex, // Set the current index
         onTap: _onItemTapped, // Handle item tap
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Color.fromARGB(255, 248, 55, 55),
         unselectedItemColor: Colors.grey,
       ),
     );
