@@ -8,36 +8,9 @@ class CarouselSliderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: [
-        Container(
-          margin: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-              image: NetworkImage('https://via.placeholder.com/400'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-              image: NetworkImage('https://via.placeholder.com/400'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-              image: NetworkImage('https://via.placeholder.com/400'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+        _buildCarouselItem('Card 1'),
+        _buildCarouselItem('Card 2'),
+        _buildCarouselItem('Card 3'),
       ],
       options: CarouselOptions(
         height: 200.0,
@@ -48,6 +21,25 @@ class CarouselSliderWidget extends StatelessWidget {
         enableInfiniteScroll: true,
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         viewportFraction: 0.8,
+      ),
+    );
+  }
+
+  Widget _buildCarouselItem(String title) {
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
       ),
     );
   }

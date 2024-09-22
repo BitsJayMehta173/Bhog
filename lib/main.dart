@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:khau/components/circle_images.dart';
 import 'package:khau/components/carousel_slider_widget.dart';
-import 'package:khau/components/special_card.dart'; // Import the SpecialCard component
+import 'package:khau/components/special_card.dart';
+import 'package:khau/components/full_width_card.dart'; // Import the FullWidthCard component
 
 void main() {
   runApp(const MainApp());
@@ -40,21 +41,22 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: IconButton(
-          icon: const Icon(Icons.add),
-          onPressed: () {
-            // Add functionality here
-          },
-        ),
+        title: const Text("Your Location"),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.location_on_rounded),
             onPressed: () {
               // Add functionality here
             },
           ),
           IconButton(
-            icon: const Icon(Icons.remove),
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              // Add functionality here
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.account_box),
             onPressed: () {
               // Add functionality here
             },
@@ -92,18 +94,34 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const CarouselSliderWidget(),
-            const SizedBox(height: 20),
-            const Center(child: Text('Order TO Eat')),
-            const CircleImages(),
-            const SizedBox(height: 20),
-            const Center(child: Text("Today's Special")),
-            const SpecialCard(),
-            const SizedBox(height: 20),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 10.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              if (_selectedIndex == 0) ...[
+                const CarouselSliderWidget(),
+                const SizedBox(height: 20),
+                const Center(child: Text('Order TO Eat')),
+                const CircleImages(),
+                const SizedBox(height: 20),
+                const Center(child: Text("Today's Special")),
+                const SpecialCard(),
+                const SizedBox(height: 20),
+                FullWidthCard(
+                  height: 200,
+                  title: 'Full Width Special Item', // Pass title to FullWidthCard
+                ),
+                const SizedBox(height: 60), // Space for future content
+              ] else if (_selectedIndex == 1) ...[
+                const Center(child: Text('Your Favorites')),
+                const SizedBox(height: 20),
+              ] else if (_selectedIndex == 2) ...[
+                const Center(child: Text('Orders')),
+                const SizedBox(height: 20),
+              ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -117,8 +135,8 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.shopping_bag_rounded),
+            label: 'Orders',
           ),
         ],
         currentIndex: _selectedIndex, // Set the current index

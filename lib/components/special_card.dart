@@ -4,18 +4,21 @@ class SpecialCard extends StatelessWidget {
   const SpecialCard({Key? key}) : super(key: key);
 
   // Method to create a card widget
-  Widget _buildCard(String imageUrl) {
+  Widget _buildCard() {
     return Card(
       margin: const EdgeInsets.all(8.0),
-      color: Colors.black, // Set the background color to black
+      color: Colors.grey,
       child: SizedBox(
-        width: 150, // Set the width of the card
-        height: 200, // Set the height of the card
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.network(
-            imageUrl,
-            fit: BoxFit.cover,
+        width: 150,
+        height: 200,
+        child: const Center(
+          child: Text(
+            'Special Item',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -24,17 +27,22 @@ class SpecialCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container( // Wrap the Wrap in a Container
-      padding: const EdgeInsets.symmetric(vertical: 20), // Add some vertical padding
-      child: Wrap( // Use Wrap instead of Row
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Wrap(
         alignment: WrapAlignment.center,
         children: [
-          _buildCard('https://via.placeholder.com/400'),
-          _buildCard('https://via.placeholder.com/400'),
-          _buildCard('https://via.placeholder.com/400'),
+          _buildCard(),
+          _buildCard(),
+          _buildCard(),
           // Add more cards as needed
         ],
       ),
     );
   }
 }
+
+
+// _buildCard('https://via.placeholder.com/400'),
+//           _buildCard('https://via.placeholder.com/400'),
+//           _buildCard('https://via.placeholder.com/400'),
