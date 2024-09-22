@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:khau/components/circle_images.dart';
 import 'package:khau/components/carousel_slider_widget.dart';
 import 'package:khau/components/special_card.dart';
-import 'package:khau/components/full_width_card.dart'; // Import the FullWidthCard component
+import 'package:khau/components/full_width_card.dart';
+import 'package:khau/pages/fav.dart'; // Import the FullWidthCard component
 
 void main() {
   runApp(const MainApp());
@@ -114,8 +115,10 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 const SizedBox(height: 60), // Space for future content
               ] else if (_selectedIndex == 1) ...[
-                const Center(child: Text('Your Favorites')),
-                const SizedBox(height: 20),
+                FavoritesScreen(),
+                FavoritesScreen(),
+
+                // const SizedBox(height: 20),
               ] else if (_selectedIndex == 2) ...[
                 const Center(child: Text('Orders')),
                 const SizedBox(height: 20),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FullWidthCard extends StatelessWidget {
   final double height;
-  final String title; // New parameter for the title text
+  final String title; // Add title parameter
 
   const FullWidthCard({Key? key, required this.height, required this.title}) : super(key: key);
 
@@ -17,7 +17,7 @@ class FullWidthCard extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                title, // Display the title text
+                title,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -26,8 +26,8 @@ class FullWidthCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 16, // Adjust the left position as needed
-              bottom: 16, // Adjust the bottom position as needed
+              bottom: 10,
+              left: 10,
               child: const Text(
                 'Mehta Bhojnalaya',
                 style: TextStyle(
