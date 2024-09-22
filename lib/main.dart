@@ -117,6 +117,10 @@ class _MainScreenState extends State<MainScreen> {
               ] else if (_selectedIndex == 1) ...[
                 FavoritesScreen(),
                 FavoritesScreen(),
+                Text("Recommendations"),
+                const CircleImages(),
+                FavoritesScreen(),
+                FavoritesScreen(),
 
                 // const SizedBox(height: 20),
               ] else if (_selectedIndex == 2) ...[

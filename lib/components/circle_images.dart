@@ -39,7 +39,7 @@ class CircleImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(3),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
